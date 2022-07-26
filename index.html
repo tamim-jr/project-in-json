@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project json</title>
+</head>
+<style>
+    .user-id{
+        color: red;
+    }
+</style>
+<body>
+    <h2>Header of user details</h2>
+    <p id="users"></p>
+
+    <script>
+        fetch("https://jsonplaceholder.typicode.com/users")
+        .then(res => res.json())
+        .then(data =>{
+            const usersinfo = document.getElementById("users");
+            for (let i = 0; i < data.length; i++) {
+                const allUsers = data[i];
+                const p = document.createElement("p");
+                p.innerHTML = `
+                <p class="user-id">Name: <strong> ${allUsers.name} </strong>
+                <button>Details</button>    
+                </p>`;
+                usersinfo.appendChild(p);
+                // console.log(allUsers);
+                // document.getElementById("users").innerHTML = allUsers.name;
+            }
+        })
+        
+    </script>
+</body>
+</html>
